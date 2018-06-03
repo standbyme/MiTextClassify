@@ -16,17 +16,11 @@ package object MiTextClassify {
   val client = new AipNlp(APP_ID, API_KEY, SECRET_KEY)
 
   def wordSimEmbedding(word1: String, word2: String): Option[SimEmbeddingScore] = {
+    Thread.sleep(200)
     try {
       val res = client.wordSimEmbedding(word1, word2, null)
-      val error_code = res.optInt("error_code", 0)
-      if (error_code == 18) {
-        println("QPS")
-        Thread.sleep(3000)
-        wordSimEmbedding(word1, word2)
-      } else {
-        val score = res.getDouble("score")
-        Some(score)
-      }
+      val score = res.getDouble("score")
+      Some(score)
     } catch {
       case _ => None
     }
