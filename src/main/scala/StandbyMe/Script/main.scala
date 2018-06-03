@@ -31,7 +31,9 @@ object main extends App {
   def handler(m: (Seq[Topic], Int)): Unit = {
     val (topics, index) = m
     println(s"Output $index")
+    println(topics)
     writer.println(topics)
+    writer.flush()
   }
 
 

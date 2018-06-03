@@ -40,17 +40,18 @@ package object MiTextClassify {
   }
 
   private def topic_handler(wordWithProbability_seq: Seq[WordWithProbability])(topic: Topic): (Topic, Score) = {
-//    println(topic)
+    //    println(topic)
 
     val scores = wordWithProbability_seq.flatMap(wordSimEmbeddingAdapter(_, topic)).map(wordWithProbability_and_score_handler)
     val average = scores.sum / scores.length
-//    println(scores.length)
+    //    println(scores.length)
     (topic, average)
   }
 
   def wordWithProbability_seq_handler(wordWithProbability_seq: Seq[WordWithProbability]): Seq[Topic] = {
     val temp = topics.map(topic_handler(wordWithProbability_seq))
-//    temp.sortBy(_._2).foreach(println)
-    temp.withFilter(_._2 > threshold).map(_._1)
+    //    temp.sortBy(_._2).foreach(println)
+    temp.sortBy(_._2).drop(14).map(_._1)
+    //    temp.withFilter(_._2 > threshold).map(_._1)
   }
 }
