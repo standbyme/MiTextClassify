@@ -1,12 +1,7 @@
 package StandbyMe.MiTextClassify
 
 object main extends App {
-  type Topic = String
-  type Word = String
-  type SimEmbeddingScore = Double
-  type Score = Double
-  type Probability = Double
-  type WordWithProbability = (Word, Probability)
+
   val topics = Array("娱乐", "家居", "健康", "国际", "教育", "社会", "游戏", "旅行", "时政", "民生", "科学", "科技", "财经", "房产", "体育", "历史", "时尚", "军事", "美食", "汽车", "星座", "情感", "育儿", "文化", "天气", "宗教")
   val threshold = 0.2
 
@@ -39,16 +34,17 @@ object main extends App {
   }
 
   val word_with_probability_array = Array(
-    ("投资", 0.0708659),
-    ("资产", 0.0246454),
-    ("报告", 0.0229653),
-    ("证券", 0.0224541),
-    ("净值", 0.0207581),
-    ("组合", 0.0202303),
-    ("期末", 0.0190425),
-    ("管理人", 0.0163324),
-    ("债券", 0.0155643),
-    ("持有", 0.0149047)
+    ("医药",0.34692),
+    ("药店",0.0579149),
+    ("药品",0.0359799),
+    ("药房",0.0339464),
+    ("处方",0.0258046),
+    ("零售",0.0198529),
+    ("国药",0.0195491),
+    ("回扣",0.0168899),
+    ("健康",0.0164062),
+    ("连锁",0.0152807)
+
   )
 
   println(word_with_probability_array_handler(word_with_probability_array))
