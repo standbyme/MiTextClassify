@@ -32,7 +32,7 @@ object main extends App {
     val (topics, index) = m
     println(s"Output $index")
     println(topics)
-    writer.println(topics)
+    writer.println(topics.mkString(" "))
     writer.flush()
   }
 
